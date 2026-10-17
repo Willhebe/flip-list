@@ -23,8 +23,8 @@ export async function getTasks(): Promise<Task[]> {
 	
         // const contents = await readFile( FILE , { encoding: 'utf8' });
 	// console.log(contents);
-        const contents2 = await sql.query('SELECT id, title, done FROM tasks ORDER BY id')
-	return contents2
+        const rows = await sql.query('SELECT id, title, done FROM tasks ORDER BY id');
+	return rows as Task[];
 	//const obj = JSON.parse(contents);
 	//if(Object.prototype.toString.call(obj) === '[object Array]') {
         //  return obj ;
