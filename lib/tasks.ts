@@ -7,13 +7,11 @@
 //  Not done looks like: it says "No jobs yet" while data/tasks.json
 //  has rows, or it shows a red error. Both are fine. That's the point.
 // ────────────────────────────────────────────────────────────────
-import { readFile } from 'node:fs/promises';
-import path from 'node:path';
+
+import { sql } from './db'
 
 export type Task = { id: number; title: string; done: boolean };
 
-// The file the Add button also writes to. Leave this line alone.
-const FILE = path.join(process.cwd(), 'data', 'tasks.json');
 
 
 export async function getTasks(): Promise<Task[]> {
@@ -22,13 +20,15 @@ export async function getTasks(): Promise<Task[]> {
   // TODO 3: if the file is missing, empty, or the JSON is broken,
   //         return [] instead of crashing.
    try {
-        const contents = await readFile( FILE , { encoding: 'utf8' });
+	
+        // const contents = await readFile( FILE , { encoding: 'utf8' });
 	// console.log(contents);
-
-	const obj = JSON.parse(contents);
-	if(Object.prototype.toString.call(obj) === '[object Array]') {
-           return obj;
-        }
+        const contents2 = await sql.query('SELECT id, title, done FROM tasks ORDER BY id')
+	return contents2
+	//const obj = JSON.parse(contents);
+	//if(Object.prototype.toString.call(obj) === '[object Array]') {
+        //  return obj ;
+        //}
   }
   catch(err)
   {
