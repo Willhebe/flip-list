@@ -1,0 +1,7 @@
+:root { color-scheme: light dark; }
+body { font: 16px/1.5 system-ui, sans-serif; max-width: 40rem; margin: 4rem auto; padding: 0 1rem; }
+ul { list-style: none; padding: 0; }
+li { padding: .35rem 0; border-bottom: 1px solid #8883; }
+form { margin-top: 1.5rem; display: flex; gap: .5rem; }
+input { flex: 1; padding: .5rem; }
+button { padding: .5rem 1rem; }
