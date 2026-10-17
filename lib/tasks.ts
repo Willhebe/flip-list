@@ -8,14 +8,12 @@
 //  has rows, or it shows a red error. Both are fine. That's the point.
 // ────────────────────────────────────────────────────────────────
 import { readFile } from 'node:fs/promises';
-import { Buffer } from 'node:buffer';
 import path from 'node:path';
 
 export type Task = { id: number; title: string; done: boolean };
 
 // The file the Add button also writes to. Leave this line alone.
 const FILE = path.join(process.cwd(), 'data', 'tasks.json');
-const buf = Buffer.alloc(16384);
 
 
 export async function getTasks(): Promise<Task[]> {
@@ -23,8 +21,7 @@ export async function getTasks(): Promise<Task[]> {
   // TODO 2: JSON.parse it, return the array.
   // TODO 3: if the file is missing, empty, or the JSON is broken,
   //         return [] instead of crashing.
-  const buf = Buffer
-  try {
+   try {
         const contents = await readFile( FILE , { encoding: 'utf8' });
 	// console.log(contents);
 
