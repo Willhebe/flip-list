@@ -16,7 +16,7 @@ try
 catch (err)
 {
 const message = err instanceof Error ? err.message : String (err);
-return new Response ('INSERT failed: ${message}', {status : 500});
+return new Response (`INSERT failed: ${message}`, {status : 500});
 }
   redirect('/');
 }
