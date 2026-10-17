@@ -11,7 +11,7 @@ export async function POST(req: Request) {
 try
 {
         
-    await sql.query('INSERT INTO tasks VALUES (title) VALUES ($1) RETURNING id', '[title]');
+    await sql.query('INSERT INTO tasks (title) VALUES ($1) RETURNING id', [title]);
   }
 catch (err)
 {
